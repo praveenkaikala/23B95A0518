@@ -34,11 +34,8 @@ export const urlShortnerController=async (req, res) => {
     await newUrl.save();
     const hostname=`${process.env.URL}:${process.env.PORT}`
     res.status(201).json({
-      message: "Short URL created successfully",
       shortLink: `${hostname}/${shortcode}`,
       expiry: expireAt.toISOString(),
-      success: true,
-      error: false,
     });
   } catch (error) {
     res.status(500).send({

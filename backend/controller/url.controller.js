@@ -98,3 +98,20 @@ export const getUrlController=async(req,res)=>{
     })
 }
 }
+
+
+export const getAllUrlController=async(req,res)=>{
+    try {
+        const data=await urlModel.find().sort({created:-1})
+        res.status(200).send({
+            'message':"list of urls",
+            data
+        })
+    } catch (error) {
+         res.status(500).send({
+        message:error.message || error,
+        success:false,
+        error:true
+    })
+    }
+}

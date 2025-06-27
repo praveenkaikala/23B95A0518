@@ -1,24 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import toast, { Toaster } from 'react-hot-toast';
+import URLShortenerForm from './pages/CreateShortUrlPage';
+import ShowStatsPage from './pages/ShowStatsPage';
+import { useGetUrls } from './hooks/useGetUrls';
 
 function App() {
+  const [data,refresh,setRefresh]=useGetUrls()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div>
+        <Toaster/>
+        <URLShortenerForm refresh={refresh} setRefresh={setRefresh}/>
+        <ShowStatsPage data={data}/>
+   </div>
   );
 }
 

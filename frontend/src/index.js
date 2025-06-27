@@ -2,12 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import ViewStats from './pages/ViewStats';
+const routes=createBrowserRouter([
+  {
+    path:"/",
+    element:<App/>
+  },
+  {
+    path:"/stats/:url",
+    element:<ViewStats/>
 
+  }
+])
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+   <RouterProvider router={routes}/>
   </React.StrictMode>
 );
 
